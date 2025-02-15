@@ -1,8 +1,14 @@
+import Count from "./Count"
+import Prop from "./prop"
 
 function App() {
 
   return (
- <h1>hello</h1>
+    <>
+    {/* <Prop name="chandan Kumar"/> */}
+    <Count/>
+
+    </>
   )
 }
 

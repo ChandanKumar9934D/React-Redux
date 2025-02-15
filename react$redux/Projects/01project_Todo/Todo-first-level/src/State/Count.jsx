@@ -17,7 +17,7 @@ function Count() {
   return (
     <div>
         <h1>{num}</h1>
-      <button onClick={add}>add</button>
+      <button onClick={add} className='btn btn-success'>add</button>
       <button onClick={min}>min</button>
     </div>
   )

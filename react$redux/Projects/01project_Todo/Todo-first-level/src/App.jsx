@@ -1,13 +1,13 @@
-import Count from "./Count"
-import Prop from "./prop"
+import Todo from "./Todo/Todo"
+import TodoBootstrap from "./Todo/TodoBootstrap"
 
 function App() {
 
   return (
     <>
-    {/* <Prop name="chandan Kumar"/> */}
-    <Count/>
 
+    {/* <Todo/> */}
+    <TodoBootstrap/>
     </>
   )
 }

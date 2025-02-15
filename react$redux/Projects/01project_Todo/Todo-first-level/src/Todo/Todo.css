@@ -1,0 +1,16 @@
+.get {
+    display: flex;
+    height: 20vh;
+    width: 50vw;
+    align-items: center;
+    justify-content: space-around;
+    margin: 20px auto;
+}
+input{
+    height: 3em;
+    width: 17em;
+}
+button{
+    height: 3em;
+    width: 7em;
+}

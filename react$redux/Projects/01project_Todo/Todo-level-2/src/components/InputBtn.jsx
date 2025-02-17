@@ -1,24 +1,25 @@
 import React from 'react'
 import { useState } from 'react'
-import ItemsList from './ItemsList'
 const InputBtn = () => {
     let [item,setItem]=useState("")
     let [date,setDate]=useState('')
 
     let handelData=()=>{
-        ItemsList.push({
-            itemName:item,
-            date:date
-        })
+        // ItemsList.push({
+        //     itemName:item,
+        //     date:date
+        // })
         
+        console.log('hello');
         
     }
     return (
         <>
             <div className="container">
                 <div className="row mt-3 d-flex justify-content-center">
-                    <div className="col-md-3 col-sm-12 my-3">
+                    <div className="col-md-3 col-sm-12 my-3 ">
                         <input type="text"
+                        className='p-2 '
                          placeholder='enter todo here'
                          value={item}
                          onChange={(e)=>{setItem(e.target.value)}}
@@ -26,6 +27,7 @@ const InputBtn = () => {
                     </div>
                     <div className="col-md-3 col-sm-12 my-3">
                         <input type="date" 
+                        className='p-2'
                         value={date}
                         onChange={(e)=>{setDate(e.target.value)}}
                         />

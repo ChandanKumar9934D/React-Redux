@@ -3,9 +3,8 @@ import styls from './Button.module.css'
 const Button = ({buttons}) => {
     return (
         <>
-            <div className="container">
-                <div className="row">
-                    <div className="col-6">
+            
+                    <div className="col">
                         <div className={styls.allBtn}>
                             {
                                 buttons.map((item, i) => (
@@ -13,16 +12,9 @@ const Button = ({buttons}) => {
 
                                 ))
                             }
-                            {/* <button className={styls.button}>C</button>
-              <button className={styls.button}>1</button>
-              <button className={styls.button}>2</button>
-              <button className={styls.button}>+</button>
-              <button className={styls.button}>+</button>
-              <button className={styls.button}>+</button> */}
+                           
                         </div>
-                    </div>
-                </div>
-            </div>
+                  </div>
         </>
     )
 }

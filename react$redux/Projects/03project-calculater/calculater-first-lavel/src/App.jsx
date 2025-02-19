@@ -8,7 +8,7 @@ function App() {
    
       <div className="container">
         <div className="row">
-          <div className={`${styls.main} col-6 px-4 mt-4`}>
+          <div className={`${styls.main} col-3 px-4 mt-4`}>
            <Input/>
            <Button buttons={buttons} />
            

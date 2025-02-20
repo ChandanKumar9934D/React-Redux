@@ -1,6 +1,7 @@
 import React from 'react'
 import styls from './Button.module.css'
-const Button = ({buttons}) => {
+const Button = ({buttons,hendelClic}) => {
+ 
     return (
         <>
             
@@ -8,7 +9,9 @@ const Button = ({buttons}) => {
                         <div className={styls.allBtn}>
                             {
                                 buttons.map((item, i) => (
-                                    <button className={styls.button} key={i}>{item}</button>
+                                    <button className={styls.button} key={i}
+                                    onClick={(event)=>{hendelClic(event,item)}}
+                                    >{item}</button>
 
                                 ))
                             }

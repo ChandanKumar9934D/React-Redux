@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import Item from './Item'
 import "../App.css"
-import Button from '../../../Projects/03project-calculater/calculater-first-lavel/src/Button'
+import Button from '../../../Projects/03project-calculater/calculater-first-lavel/src/components/Button'
 
 const ShowItem = ({food}) => {
   let [status,setStatus]=useState([])

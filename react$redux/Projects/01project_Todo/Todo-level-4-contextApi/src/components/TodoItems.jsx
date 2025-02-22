@@ -1,36 +1,17 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import TodoItem from './TodoItem'
+import { ItemsListStore } from './store/ItemTodoStore'
 
-const TodoItems = ({itemTodo,handelDelete}) => {
-    // const handelDelete=(name,date)=>{
-    //     let obj={
-    //         itemName:name,
-    //         date
-    //     }
-    //     console.log('delete');
-    //     let newdatalist=[...itemTodo,obj]
+const TodoItems = () => {
+    const {itemList}= useContext(ItemsListStore)
+   
     
-
-    //  let orignam=newdatalist.map((item)=>(
-       
-    //   item.itemName==name
-
-      
-    
-        
-    //  ))
-    //  console.log(orignam);
-     
-    // }
- 
     
     return (
         <>
         {
-            itemTodo.map((item,index)=>(
-           <TodoItem itemName={item.itemName} date={item.date} key={index} handelDelete={
-            handelDelete
-        } />
+            itemList.map((item,index)=>(
+           <TodoItem itemName={item.itemName} date={item.date} key={index} />
             ))
 }
         </>

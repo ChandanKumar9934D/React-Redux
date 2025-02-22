@@ -5,30 +5,12 @@ import InputBtn from "./InputBtn";
 import TodoItems from "./TodoItems";
 import { useState } from "react";
 import EmptyMes from "./EmptyMes";
+import { ItemsListStore } from "./store/ItemTodoStore";
+// import { handelAdd, itemList } from "./store/FunctionTodo";
 const TodoBootstrap = () => {
-  const ItemsList = [
-    {
-      itemName: "by milk",
-      date: "15/02/2025",
-    },
-    {
-      itemName: "by age",
-      date: "15/02/2025",
-    },
-    {
-      itemName: "go to school",
-      date: "15/02/2025",
-    },
-  ];
-
-  let [itemList, setItemList] = useState(ItemsList);
+  let [itemList, setItemList] = useState([]);
 
   const handelAdd = (item, date) => {
-    // let newItemList = [...itemList,{
-    //   itemName: item,
-    //   date: date,
-    // } ];
-    // setItemList(newItemList);
     setItemList((prev)=>[
       ...prev,
       {
@@ -46,10 +28,12 @@ const TodoBootstrap = () => {
   return (
     <>
       <div className="container  ">
-        <Tital />
-        <InputBtn handelAdd={handelAdd} />
-        {itemList == 0 && <EmptyMes />}
-        <TodoItems itemTodo={itemList} handelDelete={handelDelete} />
+        <ItemsListStore.Provider value={{ itemList, handelAdd, handelDelete }}>
+          <Tital />
+          <InputBtn />
+          <EmptyMes />
+          <TodoItems />
+        </ItemsListStore.Provider>
       </div>
     </>
   );

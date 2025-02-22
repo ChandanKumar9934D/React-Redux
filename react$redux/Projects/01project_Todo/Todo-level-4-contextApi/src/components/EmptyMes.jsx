@@ -1,12 +1,11 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { ItemsListStore } from './store/ItemTodoStore'
 
 const EmptyMes = () => {
-  return (
-    <>
-    <h3 className='text-center mt-2 text-capitalize'>happy food and helthy food</h3>
+  const {itemList}=useContext(ItemsListStore)
+  return itemList.length == 0 && <h3 className='text-center mt-2 text-capitalize'>happy food and helthy food</h3>
       
-    </>
-  )
+ 
 }
 
 export default EmptyMes

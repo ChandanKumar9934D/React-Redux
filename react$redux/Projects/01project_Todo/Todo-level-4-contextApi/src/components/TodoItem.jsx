@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { MdDeleteOutline } from "react-icons/md";
-const TodoItem = ({itemName,date,handelDelete}) => {
+import { ItemsListStore } from './store/ItemTodoStore';
+const TodoItem = ({itemName,date}) => {
+  const {handelDelete}=useContext(ItemsListStore)
   
   return (
     <>

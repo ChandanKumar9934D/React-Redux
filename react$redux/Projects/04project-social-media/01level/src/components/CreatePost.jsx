@@ -1,6 +1,11 @@
-import React from "react";
+import React, { useContext, useRef } from "react";
+import { PostContext } from "../store/PostStore";
 
 const CreatePost = () => {
+  const{postCreate}=useContext(PostContext)
+  const title=useRef()
+  const content=useRef()
+  const id=useRef()
   return (
     <>
       <div className="container">
@@ -10,39 +15,43 @@ const CreatePost = () => {
             <form>
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
-                  Email address
+                 Title
                 </label>
                 <input
-                  type="email"
+                  type="text"
                   className="form-control"
                   id="exampleInputEmail1"
                   aria-describedby="emailHelp"
+                  ref={title}
                 />
-                <div id="emailHelp" className="form-text">
-                  We'll never share your email with anyone else.
-                </div>
+             
+              </div>
+              <div className="mb-3">
+                <label htmlFor="id" className="form-label">
+                 Id
+                </label>
+                <input
+                  type="number"
+                  className="form-control"
+                  id="id"
+                  aria-describedby="emailHelp"
+                  ref={id}
+                />
+             
               </div>
               <div className="mb-3">
                 <label htmlFor="exampleInputPassword1" className="form-label">
-                  Password
+                  Post Content
                 </label>
                 <input
-                  type="password"
+                  type="text"
                   className="form-control"
                   id="exampleInputPassword1"
+                  ref={content}
                 />
               </div>
-              <div className="mb-3 form-check">
-                <input
-                  type="checkbox"
-                  className="form-check-input"
-                  id="exampleCheck1"
-                />
-                <label className="form-check-label" htmlFor="exampleCheck1">
-                  Check me out
-                </label>
-              </div>
-              <button type="submit" className="btn btn-primary">
+             
+              <button type="submit" className="btn btn-primary" onClick={()=>{postCreate(title,content,id)}}>
                 Submit
               </button>
             </form>

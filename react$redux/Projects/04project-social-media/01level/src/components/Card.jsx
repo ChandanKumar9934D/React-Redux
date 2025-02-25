@@ -1,18 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
+import { PostContext } from "../store/PostStore";
 
-const Card = () => {
+const Card = ({postItem}) => {
+  const {postDelete}=useContext(PostContext)
   return (
     <>
       <div className="card m-2" style={{width: "18rem"}}>
         <div className="card-body">
-          <h5 className="card-title">Card title</h5>
+          <h5 className="card-title">{postItem.title}</h5>
           <p className="card-text">
-            Some quick example text to build on the card title and make up the
-            bulk of the card's content.
+          {postItem.body}
           </p>
-          <a href="#" className="btn btn-primary">
-            Go somewhere
-          </a>
+          <button className="btn btn-danger" onClick={()=>{postDelete(postItem.id)}}>delete</button>
+          
         </div>
       </div>
     </>

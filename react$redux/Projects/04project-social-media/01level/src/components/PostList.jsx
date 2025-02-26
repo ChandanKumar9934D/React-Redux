@@ -4,7 +4,6 @@ import { PostContext } from '../store/PostStore'
 
 const PostList = () => {
   const {PostList}=useContext(PostContext)
-    console.log(PostList);
     
   return (
     <>

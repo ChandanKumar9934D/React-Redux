@@ -1,47 +1,53 @@
 import React, { createContext, useReducer, useState } from "react";
 export const PostContext = createContext({
-  PostList:[],
+  PostList: [],
   postCreate: () => {},
   postDelete: () => {},
 });
 
 const PostStore = ({ children }) => {
-//   const [PostList, setPostList] = useState([]);
-const reducer=(cruntList,action)=>{
-  let newPostItem=cruntList
-  if(action.type==="DELETE_POST"){
-    newPostItem=cruntList.map((item)=>(item.id!==action.paylod.id))
-    return newPostItem
+  //   const [PostList, setPostList] = useState([]);
+  const reducer = (cruntList, action) => {
+    let newPostItem = cruntList;
+    if (action.type === "DELETE_POST") {
+      newPostItem = cruntList.filter((item) => item.id !== action.paylod.id);
+      return newPostItem;
+    } else if (action.type === "CREATE_POST") {
+      // console.log(action);
 
-  }else if(action.type==='CREATE_POST'){
-    console.log(action);
-    
-    // newPostItem=[...cruntList,{}]
-  }
-    return cruntList
-}
-const [PostList,dispach]=useReducer(reducer,DEFAULT_POST)
+      newPostItem = [
+       
+        {
+          id: action.paylod.id,
+          title: action.paylod.title,
+          body: action.paylod.content,
+          reaction: action.paylod.reaction,
+          userId: action.paylod.userId,
+          tags: action.paylod.tags,
+        },
+        ...cruntList 
+      ];
 
-  const postCreate = (title,content,id) => {
+      return newPostItem;
+    }
+    return cruntList;
+  };
+  const [PostList, dispach] = useReducer(reducer, DEFAULT_POST);
+
+  const postCreate = ({ userId, title, tags, content, reaction }) => {
     dispach({
-      type:"CREATE_POST",
-      paylod:{
-        title,
-        content,
-        id
-      }
-
-    })
+      type: "CREATE_POST",
+      paylod: { id: Date.now(), userId, title, tags, content, reaction },
+    });
     console.log("postCreated");
   };
   const postDelete = (id) => {
     dispach({
-      type:"DELETE_POST",
-      paylod:{
-        id
-      }
-    })
-    console.log("postDelete");
+      type: "DELETE_POST",
+      paylod: {
+        id,
+      },
+    });
   };
   return (
     <PostContext.Provider value={{ PostList, postCreate, postDelete }}>

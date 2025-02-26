@@ -1,0 +1,18 @@
+.main-container{
+  display: flex;
+}
+.content{
+  width: 100%;
+}
+.sidebar{
+  min-height: 600px;
+}
+.bage{
+  margin: 0px 3px;
+  padding:8px 12px;
+}
+.spinnerC{
+  height: 5rem;
+  width: 5rem;
+  margin: 10% 0;
+}

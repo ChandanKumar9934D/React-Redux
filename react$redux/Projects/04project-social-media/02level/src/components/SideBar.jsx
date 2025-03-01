@@ -1,6 +1,7 @@
 import React from 'react'
+import { Link, NavLink } from 'react-router-dom'
 
-const SideBar = ({selectTab,setSelectTab}) => {
+const SideBar = () => {
  
   return (
     <>
@@ -11,18 +12,18 @@ const SideBar = ({selectTab,setSelectTab}) => {
     </a>
     <hr/>
     <ul className="nav nav-pills flex-column mb-auto">
-      <li className="nav-item" onClick={()=>{setSelectTab("home")}}>
-        <a href="#" className={`nav-link text-white ${selectTab==='home' && "active"}`} aria-current="page"   >
+      <li className="nav-item" >
+        <NavLink to="/" className="nav-link text-white " aria-current="page"   >
           <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#home"></use></svg>
           Home
-        </a>
+        </NavLink>
       </li>
-      <li onClick={()=>{setSelectTab("create")}}>
-        <a href="#" className= {`nav-link  text-white ${selectTab==='create' && "active"}`}  >
+      <li >
+        <NavLink to="/create-post" className= "nav-link  text-white "  >
             {/* "nav-link  text-white" */}
           <svg className="bi pe-none me-2" width="16" height="16"><use xlinkHref="#speedometer2"></use></svg>
           Create Post
-        </a>
+        </NavLink>
       </li>
      
     </ul>

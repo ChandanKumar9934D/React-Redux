@@ -1,7 +1,9 @@
 import React, { useContext, useRef } from "react";
 import { PostContext } from "../store/PostStore";
+import { useNavigate } from "react-router-dom";
 
 const CreatePost = () => {
+  const navigate = useNavigate();
   const { postCreate } = useContext(PostContext);
   const title = useRef("");
   const content = useRef("");
@@ -9,14 +11,15 @@ const CreatePost = () => {
   const userId = useRef();
   const Reaction = useRef();
 
-  const handelCreate = () => {
+  const handelCreate = (e) => {
+    e.preventDefault();
     const obj = {
       title: title.current.value,
       body: content.current.value,
       userId: userId.current.value,
       reactions: {
         likes: Reaction.current.value,
-        dislikes: Reaction.current.value
+        dislikes: Reaction.current.value,
       },
       tags: tag.current.value.split(" "),
     };
@@ -28,6 +31,7 @@ const CreatePost = () => {
       .then((res) => res.json())
       .then((obj) => {
         postCreate(obj);
+        navigate("/");
       });
     title.current.value = "";
     content.current.value = "";
@@ -41,7 +45,7 @@ const CreatePost = () => {
       <div className="container mx-5 my-3">
         <div className="row">
           <div className="col-lg-5">
-            <form>
+            <form onSubmit={handelCreate}>
               <div className="mb-3">
                 <label htmlFor="exampleInputEmail1" className="form-label">
                   Title
@@ -104,11 +108,7 @@ const CreatePost = () => {
                 />
               </div>
 
-              <button
-                type="submit"
-                className="btn btn-primary"
-                onClick={handelCreate}
-              >
+              <button type="submit" className="btn btn-primary">
                 Submit
               </button>
             </form>

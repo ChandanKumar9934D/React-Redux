@@ -37,4 +37,5 @@ store.dispatch({
   payload: {
     number: 7,
   },
+  
 });

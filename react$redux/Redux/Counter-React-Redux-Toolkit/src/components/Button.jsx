@@ -1,34 +1,25 @@
 import React, { useRef } from "react";
 import { useDispatch, useStore } from "react-redux";
-
+import { counterAction } from "./store/Counter";
+import { privacyAction } from "./store/Privacy";
 const Button = () => {
   const dispatch = useDispatch();
   const inputNum=useRef()
   const handelIncrement = () => {
-    dispatch({ type: "INCREMENT" });
+    dispatch(counterAction.Increment())
   };
   const handelDecrement = () => {
-    dispatch({ type: "DECREMENT" });
+    dispatch(counterAction.Decrement());
   };
   const handelPrivcy = () => {
-    dispatch({ type: "PRIVCE" ,payload:{
-      toggel:true
-    }});
+    dispatch(privacyAction.toggel())
   };
   const handelAddition=()=>{
-    dispatch({type:"ADDITION",
-      payload:{
-        number:Number(inputNum.current.value)
-      }
-    })
+    dispatch(counterAction.Add(inputNum.current.value))
     inputNum.current.value=" "
   }
   const handelSubtract=()=>{
-    dispatch({type:"SUBTRACT",
-      payload:{
-        number:Number(inputNum.current.value)
-      }
-    })
+    dispatch(counterAction.Sub(inputNum.current.value))
     inputNum.current.value=" "
   }
 
